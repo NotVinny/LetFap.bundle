@@ -288,6 +288,9 @@ def PornstarList(title, href, page, oc=False, container=True):
         pid = phref.split('/', 2)[2].rsplit('.', 1)[-2]
         pname = a0.get('title')
         thumb = a0.xpath('./img/@src')[0]
+
+        thumb = thumb if thumb.startswith("http") else "http:" + thumb
+
         vcount = p.xpath('.//span[@class="total-like"]')
         pvname = pname
         if vcount:
@@ -363,6 +366,8 @@ def DirectoryList(title, href, page):
         vid = vhref.split('/', 2)[2].rsplit('.', 1)[-2]
         name = a0.get('title')
         thumb = a0.xpath('./img/@src')[0]
+
+        thumb = thumb if thumb.startswith("http") else "http:" + thumb
 
         duration = v.xpath('.//span[@class="duration"]/text()')[0]
 
